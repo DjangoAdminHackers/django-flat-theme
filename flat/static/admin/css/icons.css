@@ -1,0 +1,33 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/font-awesome/font-awesome.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.addlink:before,
+.changelink:before,
+.inlinechangelink:before,
+.deletelink:before,
+.object-tools a.viewsitelink:before,
+.object-tools a.golink:before,
+table thead th.sorted .sortoptions a:before,
+ul.messagelist li:before {
+    font-family: 'FontAwesome';
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+
+.addlink:before { content: '\e800'; }
+.changelink:before, .inlinechangelink:before { content: '\e801'; }
+.deletelink:before { content: '\e802'; }
+.object-tools a.viewsitelink:before, .object-tools a.golink:before { content: '\e803'; }
+table thead th.sorted .sortoptions a.sortremove:before { content: '\e806'; }
+table thead th.sorted .sortoptions a.ascending:before { content: '\e805'; }
+table thead th.sorted .sortoptions a.descending:before { content: '\e804'; }
+ul.messagelist li:before { content: '\e807'; }
+ul.messagelist li.warning:before { content: '\e808'; }
+ul.messagelist li.error:before { content: '\e809'; }

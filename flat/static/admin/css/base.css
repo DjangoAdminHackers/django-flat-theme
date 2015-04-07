@@ -3,6 +3,7 @@
 */
 
 @import url(fonts.css);
+@import url(icons.css);
 
 body {
     margin: 0;
@@ -352,7 +353,7 @@ table thead th.sorted:hover a.sortremove {
 
 table thead th.sorted .sortoptions {
     display: block;
-    padding: 10px 5px 0 5px;
+    padding: 6px 5px 0 5px;
     float: right;
     text-align: right;
 }
@@ -361,37 +362,35 @@ table thead th.sorted .sortpriority {
     font-size: .8em;
     min-width: 12px;
     text-align: center;
-    vertical-align: top;
+    vertical-align: -1px;
 }
 
 table thead th.sorted .sortoptions a {
     width: 14px;
-    height: 12px;
+    min-height: 12px;
+    position: relative;
     display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    text-align: center;
 }
 
-table thead th.sorted .sortoptions a.sortremove {
-    background: url(../img/sorting-icons.gif) -4px -5px no-repeat;
+table thead th.sorted .sortoptions a:before {
+    color: #999;
 }
 
-table thead th.sorted .sortoptions a.sortremove:hover {
-    background: url(../img/sorting-icons.gif) -4px -27px no-repeat;
+table thead th.sorted .sortoptions a:hover:before,
+table thead th.sorted .sortoptions a:hover:after {
+    color: #447e9b;
 }
 
-table thead th.sorted .sortoptions a.ascending {
-    background: url(../img/sorting-icons.gif) -5px -50px no-repeat;
-}
-
-table thead th.sorted .sortoptions a.ascending:hover {
-    background: url(../img/sorting-icons.gif) -5px -72px no-repeat;
-}
-
-table thead th.sorted .sortoptions a.descending {
-    background: url(../img/sorting-icons.gif) -5px -94px no-repeat;
-}
-
-table thead th.sorted .sortoptions a.descending:hover {
-    background: url(../img/sorting-icons.gif) -5px -115px no-repeat;
+table thead th.sorted .sortoptions a.sortremove:after {
+    content: '/';
+    opacity: 0.5;
+    position: absolute;
+    top: -2px;
+    left: 4px;
+    font-size: 16px;
 }
 
 /* ORDERABLE TABLES */
@@ -544,20 +543,37 @@ ul.messagelist {
 
 ul.messagelist li {
     display: block;
+    position: relative;
     font-weight: 400;
     font-size: 13px;
-    padding: 10px 10px 10px 65px;
+    padding: 10px 10px 10px 60px;
     margin: 0 0 10px 0;
-    background: #dfd url(../img/icon_success.gif) 40px 12px no-repeat;
+    background: #dfd;
     color: #333;
 }
 
+ul.messagelist li:before {
+    position: absolute;
+    left: 40px;
+    top: 10px;
+    font-size: 14px;
+    color: #49ad3c;
+}
+
 ul.messagelist li.warning {
-    background: #ffc url(../img/icon_alert.gif) 40px 10px no-repeat;
+    background: #ffc;
+}
+
+ul.messagelist li.warning:before {
+    color: #fb0;
 }
 
 ul.messagelist li.error {
-    background: #ffefef url(../img/icon_error.gif) 40px 11px no-repeat;
+    background: #ffefef;
+}
+
+ul.messagelist li.error:before {
+    color: #ff0101;
 }
 
 .errornote {
@@ -648,20 +664,33 @@ div.breadcrumbs a:hover {
 
 /* ACTION ICONS */
 
-.addlink {
-    padding-left: 14px;
-    background: url(../img/icon_addlink.gif) 0 .2em no-repeat;
+.addlink, .changelink, .inlinechangelink, .deletelink {
+    position: relative;
+    padding-left: 15px;
 }
 
-.changelink, .inlinechangelink {
-    padding-left: 14px;
-    background: url(../img/icon_changelink.gif) 0 .2em no-repeat;
+.addlink:before, .changelink:before, .inlinechangelink:before, .deletelink:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 15px;
+    margin-right: 5px;
 }
 
-.deletelink {
-    padding-left: 14px;
-    background: url(../img/icon_deletelink.gif) 0 .25em no-repeat;
+.addlink:before {
+    color: #3db61c;
 }
+
+.changelink:before {
+    color: #f5b612;
+}
+
+.deletelink:before {
+    color: #c00;
+}
+
+
+
 
 a.deletelink:link, a.deletelink:visited {
     color: #CC3434;
@@ -698,6 +727,7 @@ a.deletelink:hover {
 }
 
 .object-tools a {
+    position: relative;
     border-radius: 15px;
 }
 
@@ -718,13 +748,28 @@ a.deletelink:hover {
 }
 
 .object-tools a.viewsitelink, .object-tools a.golink {
-    background: #999 url(../img/tooltag-arrowright.png) 95% center no-repeat;
+    background: #999;
     padding-right: 26px;
 }
 
+.object-tools a.viewsitelink:before, .object-tools a.golink:before {
+    position: absolute;
+    right: 10px;
+    top: 4px;
+    font-size: 11px;
+}
+
 .object-tools a.addlink {
-    background: #999 url(../img/tooltag-add.png) 95% center no-repeat;
+    background: #999;
     padding-right: 26px;
+}
+
+.object-tools a.addlink:before {
+    color: #fff;
+    left: auto;
+    right: 5px;
+    top: 6px;
+    font-size: 11px;
 }
 
 /* OBJECT HISTORY */
@@ -904,9 +949,14 @@ table#change-history tbody th {
 }
 
 #content-related .actionlist li {
-    line-height: 1.2;
+    line-height: 1;
     margin-bottom: 10px;
-    padding-left: 18px;
+    padding-left: 15px;
+}
+
+#content-related .actionlist li .quiet {
+    display: inline-block;
+    margin-top: 4px;
 }
 
 #content-related .module h2 {
